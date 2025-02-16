@@ -1,0 +1,25 @@
+.login-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    min-height: 90vh;
+    padding: 23px;
+}
+
+.login-wrapper .ant-image {
+    height: 500px;
+}
+.login-wrapper .ant-image img {
+    object-position: left;
+}
+.login-wrapper .login-form {
+    height: 500px;
+    padding: 0 23px;
+    border-radius: 9px;
+}
+
+.login-form > div:first-child {
+    margin-bottom: 14px;
+    font-size: 23px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #eee;
+}

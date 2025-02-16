@@ -1,0 +1,118 @@
+.product-header {
+    grid-template-columns: 3fr 1fr;
+}
+
+.product-header input {
+    width: 200px;
+}
+
+.product-cards-box {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 32px 14px;
+}
+
+.product-cards-box img {
+    object-position: top;
+}
+
+.product-cards-box .ant-card-cover {
+    height: 200px;
+    border: 1px solid #ccc;
+}
+
+.product-cards-box .card-title {
+    font-size: 17px;
+}
+
+.product-pagination {
+    padding: 23px 0;
+    border-top: 2px solid #eee;
+}
+
+
+.product-sort-btns {
+    margin-top: 23px;
+}
+
+
+
+
+
+/* product details page */
+
+.product-detail {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px;
+    padding: 23px 14px;
+}
+
+.product-detail .ant-image {
+    border-radius: 9px;
+    padding: 32px 14px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 550px;
+    background-color: #efefef;
+}
+.product-detail .ant-image img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-detail .product-description .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.product-detail .product-description .product-brand {
+    grid-template-columns: repeat(2, 1fr);
+}
+.product-detail .product-description p {
+    color: #555;
+}
+
+.product-detail .product-description .product-price {
+    font-size: 18px;
+    color: #555;
+}
+.product-detail .product-description .product-price span {
+    font-size: 27px;
+    margin-right: 5px;
+}
+
+
+
+
+/* media query for products list page */
+@media (max-width: 800px) {
+    .product-cards-box {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .product-header {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+}
+
+@media (max-width: 550px) {
+    .product-cards-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-detail {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .product-header:first-child > div {
+        flex-wrap: wrap;
+    }
+    .product-header:first-child > div input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .product-cards-box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
