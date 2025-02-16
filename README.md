@@ -4,7 +4,14 @@ A react application that allows user to login and view the product list and also
 
 ## Run the Application Locally
 
-Clone the respective repo from above.
+Clone the respective repo from below link.
+
+```http
+  https://github.com/ankit-pandey-14/product_list.git
+```
+
+Then, open Terminal and hit the below commands.
+- Make sure `node js` and `npm` is installed
 
 ```http
   cd ./products/
