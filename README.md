@@ -18,6 +18,10 @@ Clone the respective repo from above.
   npm run dev
 ```
 
+- Use the below credentials to login
+`UserName : testuser@nutritap.in`
+`Password : Nutritap123`
+
 
 ## Environment Variables
 
