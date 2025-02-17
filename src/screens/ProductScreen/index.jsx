@@ -100,22 +100,28 @@ const ProductScreen = () => {
                 
                 <div className="container">
                     
-                    <div className="d-flex justify-end mt-14">
-                        <Button
-                            type="primary"
-                            onClick={() => {
-                                fetchProducts(
-                                    {
-                                        pageNumber: queryInfo?.pageNumber,
-                                        pageSize: queryInfo?.pageSize,
-                                    },
-                                    {}
-                                )
-                            }}
-                        >
-                            Clear All Filters
-                        </Button>
-                    </div>
+                    {
+                        queryInfo && Object.keys(queryInfo)?.length > 2
+                        ? (
+                            <div className="d-flex justify-end mt-14">
+                                <Button
+                                    type="primary"
+                                    onClick={() => {
+                                        fetchProducts(
+                                            {
+                                                pageNumber: queryInfo?.pageNumber,
+                                                pageSize: queryInfo?.pageSize,
+                                            },
+                                            {}
+                                        )
+                                    }}
+                                >
+                                    Clear All Filters
+                                </Button>
+                            </div>
+                        )
+                        : null
+                    }
                     <div className="d-grid gap-14 product-cards-box">
                         {
                             response?.dtoList?.map((product) => {
