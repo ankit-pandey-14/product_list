@@ -26,23 +26,20 @@ const ProductScreen = () => {
         type: null,
     });
 
-    const fetchProducts = (query) => {
+    const fetchProducts = (query, prevQuery={}) => {
         const queryParams = new URLSearchParams();
-        for (const [key, value] of Object.entries(removeFalsyValuesFromObject({...queryInfo, ...query}))) {
+        for (const [key, value] of Object.entries(removeFalsyValuesFromObject({...prevQuery, ...query}))) {
             queryParams.set(key, value);
         }
         const endpoint = `${PRODUCT_LIST_ENDPOINT}?${queryParams.toString()}`;
         dispatchActions("get", null, endpoint)
 
-        setQueryInfo((prev) => {
-            return {
-                ...prev,
-                ...query
-            };
-        });
+        setQueryInfo({
+            ...prevQuery,
+            ...query,
+        })
     };
 
-    // const onSearchInput = useCallback(debounce(fetchProducts, 1000), []);
     const onSearchInput = useCallback(debounce(fetchProducts, 1000), []);
 
     useEffect(() => {
@@ -50,7 +47,7 @@ const ProductScreen = () => {
             pageNumber: 1,
             pageSize: 10
         }
-        fetchProducts(query);
+        fetchProducts(query, {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -76,7 +73,7 @@ const ProductScreen = () => {
                                     ...queryInfo,
                                     brandName: event.target.value
                                 })
-                                onSearchInput(searchQuery);
+                                onSearchInput(searchQuery, {...queryInfo});
                             }}
                         />
 
@@ -102,6 +99,23 @@ const ProductScreen = () => {
 
                 
                 <div className="container">
+                    
+                    <div className="d-flex justify-end mt-14">
+                        <Button
+                            type="primary"
+                            onClick={() => {
+                                fetchProducts(
+                                    {
+                                        pageNumber: queryInfo?.pageNumber,
+                                        pageSize: queryInfo?.pageSize,
+                                    },
+                                    {}
+                                )
+                            }}
+                        >
+                            Clear All Filters
+                        </Button>
+                    </div>
                     <div className="d-grid gap-14 product-cards-box">
                         {
                             response?.dtoList?.map((product) => {
@@ -148,7 +162,7 @@ const ProductScreen = () => {
                                 pageNumber: current,
                                 pageSize
                             }
-                            fetchProducts(query);
+                            fetchProducts(query, {...queryInfo});
                         }}
                     />
                 </div>
@@ -199,7 +213,7 @@ const ProductScreen = () => {
                             delete queryValues['filterBy'];
                         }
 
-                        fetchProducts(queryValues);
+                        fetchProducts(queryValues, {...queryInfo});
                         setActionModalInfo({
                             open: false,
                             type: null,

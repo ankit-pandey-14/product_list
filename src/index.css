@@ -73,6 +73,10 @@ img {
   gap: 5px;
 }
 
+.mt-14{
+  margin-top: 14px;
+}
+
 /* text styling */
 .text-black {
   color: #222;
