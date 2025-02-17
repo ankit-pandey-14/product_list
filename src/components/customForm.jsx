@@ -1,7 +1,7 @@
 import { Button, Form } from "antd";
 import { memo } from "react";
 
-const CustomForm = ({formFieldsList=[], onSuccess, buttonsList=[], buttonGroupClasses, onClose, classes}) => {
+const CustomForm = ({formFieldsList=[], onSuccess, buttonsList=[], initialValues, buttonGroupClasses, onClose, classes}) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
@@ -13,7 +13,7 @@ const CustomForm = ({formFieldsList=[], onSuccess, buttonsList=[], buttonGroupCl
             name="basic"
             form={form}
             layout="vertical"
-            initialValues={{}}
+            initialValues={initialValues || {}}
             onFinish={onFinish}
             onFinishFailed={() => {}}
             autoComplete="off"

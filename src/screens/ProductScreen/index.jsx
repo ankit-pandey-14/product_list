@@ -171,6 +171,10 @@ const ProductScreen = () => {
                 }}
             >
                 <CustomForm
+                    initialValues={
+                        {...queryInfo}
+
+                    }
                     formFieldsList={
                         actionModalInfo.type === 'sort'
                         ? productSortingFormField()
