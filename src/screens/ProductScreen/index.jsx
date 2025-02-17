@@ -172,7 +172,14 @@ const ProductScreen = () => {
             >
                 <CustomForm
                     initialValues={
-                        {...queryInfo}
+                        actionModalInfo.type === 'sort'
+                        ? { ...queryInfo }
+                        : {
+                            ...queryInfo,
+                            filterBy: queryInfo?.brandName
+                                        ? 'brandName'
+                                        : queryInfo?.isVeg ? 'isVeg' : ''
+                        }
 
                     }
                     formFieldsList={
